@@ -1,0 +1,47 @@
+---
+import HeaderLink from '../HeaderLink.astro';
+import { SITE_TITLE } from '../../consts';
+import ThemeToggler from './ThemeToggler';
+---
+<!-- This is intentionally inlined to avoid FOUC -->
+<script is:inline>
+	const root = document.documentElement;
+	const theme = (() => {
+		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+			return localStorage.getItem('theme');
+		}
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			return 'dark';
+		}
+		return 'light';
+	})();
+	if (theme === 'light') {
+		root.classList.remove('dark');
+	} else {
+		root.classList.add('dark');
+	}
+</script>
+
+<header>
+	<h2>
+		{SITE_TITLE}
+	</h2>
+	<nav>
+		<HeaderLink href="/">Home</HeaderLink>
+		<HeaderLink href="/blog">Blog</HeaderLink>
+		<HeaderLink href="/about">About</HeaderLink>
+		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
+		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
+    <ThemeToggler client:visible/>
+	</nav>
+</header>
+<style>
+	header {
+		margin: 0em 0 2em;
+	}
+	h2 {
+		margin: 0.5em 0;
+	}
+</style>
+
+</header>
