@@ -1,6 +1,5 @@
 ---
 import HeaderLink from '../HeaderLink.astro';
-import { SITE_TITLE } from '../../consts';
 import ThemeToggler from './ThemeToggler';
 ---
 <!-- This is intentionally inlined to avoid FOUC -->
@@ -22,26 +21,14 @@ import ThemeToggler from './ThemeToggler';
 	}
 </script>
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
+<header class="flex h-20 max-w-7xl justify-between m-auto items-center">
+	<h2>Anand</h2>
+	<nav class="flex gap-3">
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
 		<HeaderLink href="/about">About</HeaderLink>
 		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
 		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-    <ThemeToggler client:visible/>
 	</nav>
-</header>
-<style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
-</style>
-
+	<ThemeToggler client:visible/>
 </header>
