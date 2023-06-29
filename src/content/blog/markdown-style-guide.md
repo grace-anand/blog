@@ -94,6 +94,9 @@ The blockquote element represents content that is quoted from another source, op
   - Milk
   - Cheese
 
+## Inline style
+`test-inline`
+
 ## Other Elements — abbr, sub, sup, kbd, mark
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
