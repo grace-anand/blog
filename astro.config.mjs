@@ -1,12 +1,21 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-
-import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
-  integrations: [mdx(), sitemap(), react(), tailwind()]
+	site: 'https://graceanand.dev',
+	markdown: {
+		drafts: true,
+	},
+	integrations: [
+		mdx({
+			drafts: true,
+		}),
+		sitemap(),
+		react(),
+		tailwind(),
+	],
 });
