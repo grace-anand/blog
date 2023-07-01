@@ -7,15 +7,5 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://graceanand.dev',
-	markdown: {
-		drafts: true,
-	},
-	integrations: [
-		mdx({
-			drafts: true,
-		}),
-		sitemap(),
-		react(),
-		tailwind(),
-	],
+	integrations: [mdx(), sitemap(), react(), tailwind()],
 });
