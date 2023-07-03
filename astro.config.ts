@@ -4,8 +4,12 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
-// https://astro.build/config
 export default defineConfig({
 	site: 'https://graceanand.dev',
 	integrations: [mdx(), sitemap(), react(), tailwind()],
+	markdown: {
+		shikiConfig: {
+			theme: 'one-dark-pro',
+		},
+	},
 });

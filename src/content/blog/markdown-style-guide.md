@@ -1,10 +1,17 @@
 ---
-title: "Markdown Style Guide"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-pubDate: "Jul 01 2022"
-heroImage: "/placeholder-hero.jpg"
+title: 'Markdown Style Guide'
+description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
+pubDate: 'Jul 01 2022'
+heroImage: '/placeholder-hero.jpg'
 ---
 
+<details><summary>Open Table of Contem</summary><p></p>
+<p>Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.</p>
+<p></p></details>
+
+<details><summary>Open Table of Contem</summary><p></p>
+<p>Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.</p>
+<p></p></details>
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 
 ## Headings
@@ -65,7 +72,13 @@ The blockquote element represents content that is quoted from another source, op
     <title>Example HTML5 Document</title>
   </head>
   <body>
-    <p>Test</p>
+    <p>Test Multiple lines of code</p>
+    <p>
+      Test One line expanding through a long line of code Test One line expanding through a long
+      line of codeTest One line expanding through a long line of codeTest One line expanding through
+      a long line of codeTest One line expanding through a long line of codeTest One line expanding
+      through a long line of code
+    </p>
   </body>
 </html>
 ```
@@ -95,6 +108,7 @@ The blockquote element represents content that is quoted from another source, op
   - Cheese
 
 ## Inline style
+
 `test-inline`
 
 ## Other Elements — abbr, sub, sup, kbd, mark
@@ -108,3 +122,5 @@ X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
+
+Test <mark>mark tag</mark>
