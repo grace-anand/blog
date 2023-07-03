@@ -1,165 +1,166 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
- 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
- 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
- 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
- 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
- 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
- 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
- 
-    --ring: 240 5% 64.9%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
- 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
- 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
- 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
- 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
- 
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
- 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
- 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
- 
-    --ring: 240 3.7% 15.9%;
-  }
-}
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 240 10% 3.9%;
+
+		--muted: 240 4.8% 95.9%;
+		--muted-foreground: 240 3.8% 46.1%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 240 10% 3.9%;
+
+		--card: 0 0% 100%;
+		--card-foreground: 240 10% 3.9%;
+
+		--border: 240 5.9% 90%;
+		--input: 240 5.9% 90%;
+
+		--primary: 240 5.9% 10%;
+		--primary-foreground: 0 0% 98%;
+
+		--secondary: 240 4.8% 95.9%;
+		--secondary-foreground: 240 5.9% 10%;
+
+		--accent: 240 4.8% 95.9%;
+		--accent-foreground: 240 5.9% 10%;
+
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 0 0% 98%;
+
+		--ring: 240 5% 64.9%;
+
+		--radius: 0.5rem;
+
+		scroll-behavior: smooth;
+	}
+
+	.dark {
+		--background: 240 10% 3.9%;
+		--foreground: 0 0% 98%;
+
+		--muted: 240 3.7% 15.9%;
+		--muted-foreground: 240 5% 64.9%;
+
+		--popover: 240 10% 3.9%;
+		--popover-foreground: 0 0% 98%;
+
+		--card: 240 10% 3.9%;
+		--card-foreground: 0 0% 98%;
+
+		--border: 240 3.7% 15.9%;
+		--input: 240 3.7% 15.9%;
+
+		--primary: 0 0% 98%;
+		--primary-foreground: 240 5.9% 10%;
+
+		--secondary: 240 3.7% 15.9%;
+		--secondary-foreground: 0 0% 98%;
+
+		--accent: 240 3.7% 15.9%;
+		--accent-foreground: 0 0% 98%;
+
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 85.7% 97.3%;
+
+		--ring: 240 3.7% 15.9%;
+	}
 }
 
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
 
 .markdown {
-  @apply flex w-full flex-col items-start justify-start px-4 leading-relaxed text-slate-900 selection:bg-bk-purple-200 selection:text-bk-purple-500 dark:text-bk-purple-100 dark:selection:bg-bk-purple-100 dark:selection:text-slate-900;
+	@apply flex w-full flex-col items-start justify-start px-4 leading-relaxed text-slate-900 selection:bg-bk-purple-200 selection:text-bk-purple-500 dark:text-bk-purple-100 dark:selection:bg-bk-purple-100 dark:selection:text-slate-900;
 }
 .markdown h1 {
-  @apply mt-8 mb-4 scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl
+	@apply mt-8 mb-4 scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl;
 }
 .markdown h2 {
-  @apply mt-8 mb-4 scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0
+	@apply mt-8 mb-4 scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0;
 }
 .markdown h3 {
-  @apply mt-4 mb-2 scroll-m-20 text-xl font-semibold tracking-tight;
+	@apply mt-4 mb-2 scroll-m-20 text-xl font-semibold tracking-tight;
 }
 .markdown h4 {
-  @apply mt-2 mb-1 scroll-m-20 text-base font-semibold tracking-tight
+	@apply mt-2 mb-1 scroll-m-20 text-base font-semibold tracking-tight;
 }
 .markdown li {
-  @apply list-disc text-slate-900 dark:text-white;
+	@apply list-disc text-slate-900 dark:text-white;
 }
 .markdown ol > li {
-  @apply mb-2 list-decimal;
+	@apply mb-2 list-decimal;
 }
 .markdown p {
-  @apply mb-4 dark:text-white;
+	@apply mb-4 dark:text-white;
 }
 .markdown a > p {
-  @apply mb-0 text-sm;
+	@apply mb-0 text-sm;
 }
 .markdown a:not(.heading-link--hidden---effects) {
-  @apply text-bk-purple-500 underline decoration-slate-500 
+	@apply text-bk-purple-500 underline decoration-slate-500 
         decoration-dotted underline-offset-2  
         hover:text-bk-purple-700 dark:text-bk-purple-200 
         dark:decoration-bk-purple-200 dark:hover:text-bk-purple-300;
 }
 
 .markdown code {
-  @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold
+	@apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
 }
 
 .markdown .code-wrapper {
-  @apply inline rounded border border-bk-purple-200 bg-bk-purple-200/40 px-0.5 py-[0.5px] dark:border-bk-purple-400/30 dark:bg-bk-purple-400/20;
+	@apply inline rounded border border-bk-purple-200 bg-bk-purple-200/40 px-0.5 py-[0.5px] dark:border-bk-purple-400/30 dark:bg-bk-purple-400/20;
 }
 
 .markdown .remark-code-title {
-  @apply z-10 -mb-1 mt-3 w-full rounded-t-md border border-bk-purple-300/80 bg-[#191724] px-2 py-1 font-mono text-bk-purple-200;
+	@apply z-10 -mb-1 mt-3 w-full rounded-t-md border border-bk-purple-300/80 bg-[#191724] px-2 py-1 font-mono text-bk-purple-200;
 }
 
 .markdown pre {
-  @apply mx-auto mb-3 rounded border border-bk-purple-300/80 p-2 pl-3 font-mono shadow-xl sm:pt-2;
+	@apply mx-auto mb-3 rounded border border-bk-purple-300/80 p-2 pl-3 font-mono shadow-xl sm:pt-2;
 }
 
 .markdown ol {
-  @apply w-full;
+	@apply w-full;
 }
 
 .markdown details {
-  @apply mt-2 w-full rounded-md border border-bk-purple-300/80 bg-[#191724] px-3 transition-all duration-300 ease-in-out;
+	@apply mt-2 w-full rounded-md border border-bk-purple-300/80 bg-[#191724] px-3 transition-all duration-300 ease-in-out;
 }
 .markdown details[open] {
-  @apply bg-bk-purple-200/10;
+	@apply bg-bk-purple-200/10;
 }
 .markdown details pre {
-  @apply border-0 shadow-none;
+	@apply border-0 shadow-none;
 }
 .markdown details > summary {
-  @apply cursor-pointer text-[#A6ACCD];
+	@apply cursor-pointer text-[#A6ACCD];
 }
 .markdown summary {
-  @apply py-3;
+	@apply py-3;
 }
 
 .markdown p > img {
-  @apply mt-8 text-sm;
+	@apply mt-8 text-sm;
 }
 .markdown table > tbody > tr > td > a {
-  overflow-wrap: anywhere;
+	overflow-wrap: anywhere;
 }
 .markdown table {
-  @apply max-w-full table-fixed;
+	@apply max-w-full table-fixed;
 }
 .markdown table > tbody > tr > td {
-  @apply align-top;
+	@apply align-top;
 }
 .markdown blockquote a {
-  @apply text-slate-900 dark:text-bk-purple-50;
+	@apply text-slate-900 dark:text-bk-purple-50;
 }
