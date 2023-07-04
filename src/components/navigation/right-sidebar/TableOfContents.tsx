@@ -1,6 +1,6 @@
 import type { MarkdownHeading } from 'astro';
-import type { JSX } from 'react';
-import { useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface TocItem extends MarkdownHeading {
 	children: TocItem[];
@@ -22,21 +22,21 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 	const [open, setOpen] = useState(!isMobile);
 	const onThisPageID = 'on-this-page-heading';
 
-	const Container = ({ children }: { children: any }) => {
+	const Container = ({ children }: { children: ReactNode }) => {
 		return isMobile ? (
 			<details
 				{...{ open }}
-				onToggle={(e: any) => setOpen(e.currentTarget.open)}
+				onToggle={(e: React.MouseEvent<HTMLDetailsElement>) => setOpen(e.currentTarget.open)}
 				className="toc-mobile-container"
 			>
 				{children}
 			</details>
 		) : (
-			<>{children}</>
+			<div className="h-[20000px]">{children}</div>
 		);
 	};
 
-	const HeadingContainer = ({ children }: { children: JSX.Element }) => {
+	const HeadingContainer = ({ children }: { children: ReactNode }) => {
 		return isMobile ? (
 			<summary className="toc-mobile-header">
 				<div className="toc-mobile-header-content">
@@ -68,7 +68,6 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 	useEffect(() => {
 		const setCurrent: IntersectionObserverCallback = (entries) => {
 			for (const entry of entries) {
-				console.log('🚀 ~ file: TableOfContents.tsx:69 ~ useEffect ~ entry:', entry);
 				if (entry.isIntersecting) {
 					const { id } = entry.target;
 					if (id === onThisPageID) continue;
@@ -97,7 +96,7 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 		return () => headingsObserver.disconnect();
 	}, []);
 
-	const onLinkClick = (e: JSX.TargetedMouseEvent<HTMLAnchorElement>) => {
+	const onLinkClick = (e: React.MouseEvent) => {
 		if (!isMobile) return;
 		setOpen(false);
 		setCurrentHeading({
@@ -107,12 +106,20 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 	};
 
 	const TableOfContentsItem = ({ heading }: { heading: TocItem }) => {
-		const { depth, slug, text, children } = heading;
+		const { slug, text, children } = heading;
 		return (
-			<li>
+			<li
+				className={`w-full list-none border-bk-purple-300/20 p-1 text-sm transition-colors duration-300 hover:border-bk-purple-300/50 ${
+					currentHeading.slug === slug
+						? 'border-bk-purple-300/100 dark:bg-bk-purple-300/20 bg-bk-purple-300/30'
+						: ''
+				}`.trim()}
+			>
 				<a
-					className={`header-link depth-${depth} ${
-						currentHeading.slug === slug ? 'current-header-link' : ''
+					className={`text-bk-purple-800 hover:text-bk-purple-400 dark:text-bk-purple-200 dark:hover:text-bk-purple-100 ${
+						currentHeading.slug === slug
+							? 'font-medium text-bk-purple-700 dark:text-bk-purple-100'
+							: ''
 					}`.trim()}
 					href={`#${slug}`}
 					onClick={onLinkClick}
@@ -137,7 +144,7 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 					{labels.onThisPage}
 				</h2>
 			</HeadingContainer>
-			<ul className="toc-root">
+			<ul className="toc-root list-none sticky top-0">
 				{toc.map((heading2) => (
 					<TableOfContentsItem key={heading2.slug} heading={heading2} />
 				))}
