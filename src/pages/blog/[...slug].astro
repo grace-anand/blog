@@ -1,6 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import TableOfContents from '../../components/navigation/right-sidebar/TableOfContents';
 import generateToc from '../../lib/utils/generateToc';
 
@@ -27,10 +27,24 @@ const { Content, headings } = await post.render();
 		</div>
 	)
 }
-<BlogPost {...post.data}>
+<BaseLayout {...post.data}>
 	<h1 id="overview">{post.data.title}</h1>
 	<div class="flex">
-		<div>
+		<aside>
+			<div class="flex items-center">
+				<img
+					src='https://avatars.githubusercontent.com/u/95082903?s=48&v=4'
+					alt='anand'
+					class="w-12 h-12 rounded-full mr-4"
+				/>
+				<div class="text-sm">
+					<p class="text-gray-900 leading-none">anand</p>
+					<p class="text-gray-600">11/11/1999</p>
+				</div>
+			</div>
+		</aside>
+		<article class="markdown"><Content /></article>
+		<aside>
 			{
 				headings && (
 					<TableOfContents
@@ -41,7 +55,7 @@ const { Content, headings } = await post.render();
 					/>
 				)
 			}
-		</div>
-		<div class="something"><Content /></div>
+		</aside>
 	</div>
-</BlogPost>
+</BaseLayout>
+

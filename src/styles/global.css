@@ -114,7 +114,7 @@
 }
 
 .markdown code {
-	@apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+	@apply relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
 }
 
 .markdown .code-wrapper {
@@ -127,6 +127,10 @@
 
 .markdown pre {
 	@apply mx-auto mb-3 rounded border border-bk-purple-300/80 p-2 pl-3 font-mono shadow-xl sm:pt-2;
+}
+
+.markdown pre {
+	@apply bg-background !important;
 }
 
 .markdown ol {

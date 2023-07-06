@@ -1,8 +1,5 @@
 ---
-import BaseHead from '../../components/navigation/header/BaseHead.astro';
-import Header from '../../components/navigation/header/index.astro';
-import Footer from '../../components/navigation/footer/index.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
@@ -10,45 +7,17 @@ const posts = (
 	await getCollection('blog', ({ data }) => process.env.NODE_ENV !== 'production' || !data.draft)
 ).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			ul {
-				list-style-type: none;
-				padding: unset;
+<BaseLayout>
+	<section class="max-w-7xl m-auto px-4">
+		<ul>
+			{
+				posts.map((post) => (
+					<li class="py-3">
+						<FormattedDate date={post.data.pubDate}/>
+						<a class="text-blue-600 visited:text-red-500" href={`/blog/${post.slug}/`}>{post.data.title}</a>
+					</li>
+				))
 			}
-			ul li {
-				display: flex;
-			}
-			ul li :global(time) {
-				flex: 0 0 130px;
-				font-style: italic;
-				color: #595959;
-			}
-			ul li a:visited {
-				color: #8e32dc;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<FormattedDate date={post.data.pubDate} />
-								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+		</ul>
+	</section>
+</BaseLayout>
