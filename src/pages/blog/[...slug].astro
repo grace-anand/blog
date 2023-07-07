@@ -27,35 +27,37 @@ const { Content, headings } = await post.render();
 		</div>
 	)
 }
-<BaseLayout {...post.data}>
-	<h1 id="overview">{post.data.title}</h1>
-	<div class="flex">
-		<aside>
-			<div class="flex items-center">
-				<img
-					src='https://avatars.githubusercontent.com/u/95082903?s=48&v=4'
-					alt='anand'
-					class="w-12 h-12 rounded-full mr-4"
-				/>
-				<div class="text-sm">
-					<p class="text-gray-900 leading-none">anand</p>
-					<p class="text-gray-600">11/11/1999</p>
-				</div>
+<BaseLayout {...post.data} className='flex justify-between mx-4'>
+	<aside class="sticky">
+		<div class="flex items-center">
+			<img
+				src='https://avatars.githubusercontent.com/u/95082903?s=48&v=4'
+				alt='anand'
+				class="w-12 h-12 rounded-full mr-4"
+			/>
+			<div class="text-sm">
+				<p class="text-gray-900 leading-none">anand</p>
+				<p class="text-gray-600">11/11/1999</p>
 			</div>
-		</aside>
-		<article class="markdown"><Content /></article>
-		<aside>
+		</div>
+	</aside>
+	<article class="markdown max-w-7xl">
+		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
+		<Content />
+	</article>
+	<aside>
+		<div class="sticky top-5">
 			{
 				headings && (
 					<TableOfContents
 						client:media="(min-width: 50em)"
 						toc={generateToc(headings, 'overview')}
-						labels={{ onThisPage: 'TableOfContents' }}
+						labels={{ onThisPage: 'Table Of Contents' }}
 						isMobile={false}
 					/>
 				)
 			}
-		</aside>
-	</div>
+		</div>
+	</aside>
 </BaseLayout>
 

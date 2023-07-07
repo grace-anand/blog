@@ -32,15 +32,15 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 				{children}
 			</details>
 		) : (
-			<div className="h-[20000px]">{children}</div>
+			children
 		);
 	};
 
 	const HeadingContainer = ({ children }: { children: ReactNode }) => {
 		return isMobile ? (
-			<summary className="toc-mobile-header">
-				<div className="toc-mobile-header-content">
-					<div className="toc-toggle">
+			<summary className="">
+				<div className="">
+					<div className="">
 						{children}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 						</svg>
 					</div>
 					{!open && currentHeading?.slug !== 'overview' && (
-						<span className="toc-current-heading">{unescape(currentHeading?.text || '')}</span>
+						<span className="">{unescape(currentHeading?.text || '')}</span>
 					)}
 				</div>
 			</summary>
@@ -144,7 +144,7 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 					{labels.onThisPage}
 				</h2>
 			</HeadingContainer>
-			<ul className="toc-root list-none sticky top-0">
+			<ul className="list-none">
 				{toc.map((heading2) => (
 					<TableOfContentsItem key={heading2.slug} heading={heading2} />
 				))}

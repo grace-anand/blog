@@ -2,6 +2,11 @@
 import Header from '../components/navigation/header/index.astro';
 import Footer from '../components/navigation/footer/index.astro';
 import BaseHead from '../components/navigation/header/BaseHead.astro';
+
+export interface Props {
+	className?: string;
+}
+const { className } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +15,7 @@ import BaseHead from '../components/navigation/header/BaseHead.astro';
 	</head>
 	<body>
 		<Header />
-		<main class="min-h-[calc(100vh-150px)]">
+		<main class=`min-h-[calc(100vh-150px)] ${className}`>
 			<slot />
 		</main>
 		<Footer />
