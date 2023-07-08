@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "my-portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -30,6 +30,7 @@
   "devDependencies": {
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.10.0",
-    "prettier-plugin-tailwindcss": "^0.3.0"
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "@types/node": "^16.11.11"
   }
 }

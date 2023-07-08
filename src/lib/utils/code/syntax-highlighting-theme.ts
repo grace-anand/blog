@@ -1,5 +1,3 @@
-import type { ShikiConfig } from 'astro';
-
 const red = { 0: '#ff657c' };
 const yellow = { 0: '#EBCB8B', 1: '#ffbd2e' };
 const blue = { 0: '#66adff', 1: '#5E81AC' };
@@ -10,7 +8,7 @@ const grey = { 0: '#d8dee9', 1: '#c7c5d3', 2: '#aba8bd', 9: '#312749' };
 const foregroundPrimary = grey[0];
 const backgroundPrimary = grey[9];
 
-export const theme: ShikiConfig['theme'] = {
+export const theme = {
 	name: 'Star Gazer',
 	type: 'dark',
 	fg: foregroundPrimary,
@@ -941,4 +939,4 @@ export const theme: ShikiConfig['theme'] = {
 			},
 		},
 	],
-};
+} as any;
