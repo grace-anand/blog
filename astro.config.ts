@@ -3,12 +3,13 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
-import { theme } from './src/lib/utils/code/syntax-highlighting-theme';
+import remarkCodeTitles from 'remark-code-titles';
 
 export default defineConfig({
 	site: 'https://graceanand.dev',
 	integrations: [mdx(), sitemap(), react(), tailwind()],
 	markdown: {
-		shikiConfig: { theme },
+		remarkPlugins: [remarkCodeTitles],
+		shikiConfig: { theme: 'one-dark-pro' },
 	},
 });
