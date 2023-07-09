@@ -1,36 +1,4 @@
 import { useEffect, useState } from 'react';
-import './ThemeToggler.css';
-
-const themes = ['light', 'dark'];
-
-const icons = [
-	<svg
-		key="light"
-		xmlns="http://www.w3.org/2000/svg"
-		width="20"
-		height="20"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<path
-			fillRule="evenodd"
-			d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-			clipRule="evenodd"
-		/>
-	</svg>,
-	<svg
-		key="dark"
-		xmlns="http://www.w3.org/2000/svg"
-		width="20"
-		height="20"
-		viewBox="0 0 20 20"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-	</svg>,
-];
 
 const ThemeToggler = () => {
 	const [theme, setTheme] = useState(() => {
@@ -50,36 +18,42 @@ const ThemeToggler = () => {
 	}, [theme]);
 
 	return (
-		<div className={'theme-toggle hide-on-mobile'}>
-			{themes.map((t, i) => {
-				const icon = icons[i];
-				const checked = t === theme;
-				const themeLabel = t === 'light' ? 'useLight' : 'useDark';
-				return (
-					<label key={themeLabel} title={themeLabel} className={checked ? 'checked' : ''}>
-						{icon}
-						<input
-							type="radio"
-							name="theme-toggle"
-							checked={checked}
-							value={t}
-							aria-label={themeLabel}
-							onChange={() => {
-								const matchesDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		<button
+			className="p-3 sm:p-1"
+			title="Toggles light & dark"
+			aria-label="auto"
+			aria-live="polite"
+			onClick={() => {
+				const t = theme === 'light' ? 'dark' : 'light';
+				const matchesDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-								if ((matchesDarkTheme && t === 'dark') || (!matchesDarkTheme && t === 'light')) {
-									localStorage.removeItem('theme');
-								} else {
-									localStorage.setItem('theme', t);
-								}
+				if ((matchesDarkTheme && t === 'dark') || (!matchesDarkTheme && t === 'light')) {
+					localStorage.removeItem('theme');
+				} else {
+					localStorage.setItem('theme', t);
+				}
 
-								setTheme(t);
-							}}
-						/>
-					</label>
-				);
-			})}
-		</div>
+				setTheme(t);
+			}}
+		>
+			{theme === 'light' ? (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					id="moon-svg"
+					className="scale-125 hover:rotate-12 sm:scale-100 h-6 w-6 fill-primary"
+				>
+					<path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z" />
+				</svg>
+			) : (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					id="sun-svg"
+					className="scale-125 hover:rotate-12 sm:scale-100 h-6 w-6 fill-primary"
+				>
+					<path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z" />
+				</svg>
+			)}
+		</button>
 	);
 };
 
