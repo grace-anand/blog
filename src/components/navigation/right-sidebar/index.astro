@@ -1,0 +1,15 @@
+---
+const { headings } = Astro.props;
+import TableOfContents from "./TableOfContents";
+import generateToc from "../../../../src/lib/utils/generateToc";
+---
+{
+  headings && (
+    <TableOfContents
+      client:media="(min-width: 50em)"
+      toc={generateToc(headings, 'overview')}
+      labels={{ onThisPage: 'Table Of Contents' }}
+      isMobile={false}
+    />
+  )
+}

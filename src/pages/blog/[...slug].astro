@@ -1,8 +1,8 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import TableOfContents from '../../components/navigation/right-sidebar/TableOfContents';
-import generateToc from '../../lib/utils/generateToc';
+import RightSideBar from '../../components/navigation/right-sidebar/index.astro';
+import LeftSideBar from '../../components/navigation/left-sidebar/index.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection(
@@ -28,17 +28,9 @@ const { Content, headings } = await post.render();
 	)
 }
 <BaseLayout {...post.data} className='flex justify-between mx-4'>
-	<aside class="sticky">
-		<div class="flex items-center">
-			<img
-				src='https://avatars.githubusercontent.com/u/95082903?s=48&v=4'
-				alt='anand'
-				class="w-12 h-12 rounded-full mr-4"
-			/>
-			<div class="text-sm">
-				<p class="text-gray-900 leading-none">anand</p>
-				<p class="text-gray-600">11/11/1999</p>
-			</div>
+	<aside>
+		<div class="sticky top-5">
+			<LeftSideBar/>
 		</div>
 	</aside>
 	<article class="markdown max-w-7xl px-6">
@@ -47,16 +39,7 @@ const { Content, headings } = await post.render();
 	</article>
 	<aside>
 		<div class="sticky top-5">
-			{
-				headings && (
-					<TableOfContents
-						client:media="(min-width: 50em)"
-						toc={generateToc(headings, 'overview')}
-						labels={{ onThisPage: 'Table Of Contents' }}
-						isMobile={false}
-					/>
-				)
-			}
+			<RightSideBar headings={headings} />
 		</div>
 	</aside>
 </BaseLayout>
