@@ -12,4 +12,7 @@ export default defineConfig({
 		remarkPlugins: [remarkCodeTitles],
 		shikiConfig: { theme: 'one-dark-pro' },
 	},
+	experimental: {
+		assets: true,
+	},
 });

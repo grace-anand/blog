@@ -2,9 +2,12 @@
 import HeaderLink from './HeaderLink.astro';
 import ThemeToggler from './ThemeToggler';
 import { LINKS } from '../../../consts';
+import logo from '~/assets/logo.png';
 ---
 <header class="flex h-20 max-w-7xl justify-between m-auto items-center">
-	<h2>Anand</h2>
+	<a href="/">
+		<img src={logo.src} alt="Logo" height={logo.height/20} width={logo.width/20}/>
+	</a>
 	<nav class="flex gap-3">
 		{LINKS.map((link) => (
 			<HeaderLink href={link.href}>{link.text}</HeaderLink>
