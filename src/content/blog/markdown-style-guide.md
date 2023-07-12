@@ -5,7 +5,7 @@ pubDate: 'Jul 01 2022'
 heroImage: '/placeholder-hero.jpg'
 ---
 
-<details><summary>Open Table of Contem</summary><p></p>
+<details><summary>Open Table of Content</summary><p></p>
 <p>Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.</p>
 <p></p></details>
 
