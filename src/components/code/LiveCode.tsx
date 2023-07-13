@@ -5,6 +5,7 @@ import {
 	SandpackPreview,
 } from '@codesandbox/sandpack-react';
 import { nightOwl } from '@codesandbox/sandpack-themes';
+import styles from './LiveCode.module.css';
 
 const LiveCode = () => (
 	<SandpackProvider
@@ -12,9 +13,9 @@ const LiveCode = () => (
 		template="react"
 		options={{
 			classes: {
-				'sp-wrapper': 'w-[100vw !important]',
-				'sp-layout': 'custom-layout',
-				'sp-tab-button': 'custom-tab',
+				'sp-wrapper': styles['sp-wrapper'] || '',
+				'sp-layout': styles['sp-layout'] || '',
+				'sp-tab-button': styles['sp-tab-button'] || '',
 			},
 		}}
 		className="w-[100vw] h-[100vh]"

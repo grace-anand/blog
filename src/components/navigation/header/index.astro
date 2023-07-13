@@ -6,14 +6,14 @@ const { pathname } = Astro.url;
 const isHomePage = pathname === '/' || ''
 ---
 <header class="flex h-20 max-w-7xl justify-between m-auto items-center">
-	<a href="/">
+	<a href="/" class="ps-3">
 		<img src={logo.src} alt="Logo" height={logo.height/20} width={logo.width/20}/>
 	</a>
-	<ul class="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground gap-3 px-3">
-		<li class={isHomePage ? 'text-foreground shadow' : ''} class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+	<ul class="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground gap-3 px-3 select-none">
+		<li class={isHomePage ? 'text-foreground' : ''} class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
 			<a href="/">Home</a>
 		</li>
-		<li class={!isHomePage ? 'text-foreground shadow' : ''} class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+		<li class={!isHomePage ? 'text-foreground' : ''} class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
 			<a href="/blog">Blog</a>
 		</li>
 	</ul>
