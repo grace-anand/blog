@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import PostCard from '../../components/post/PostCard.astro';
 
 const posts = (
 	await getCollection('blog', ({ data }) => process.env.NODE_ENV !== 'production' || !data.draft)
@@ -9,15 +9,11 @@ const posts = (
 ---
 <BaseLayout>
 	<section class="max-w-7xl m-auto px-4">
-		<ul>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			{
 				posts.map((post) => (
-					<li class="py-3">
-						<FormattedDate date={post.data.pubDate}/>
-						<a class="text-blue-600 visited:text-red-500" href={`/blog/${post.slug}/`}>{post.data.title}</a>
-					</li>
+					<PostCard post={post} />
 				))
 			}
-		</ul>
 	</section>
 </BaseLayout>
