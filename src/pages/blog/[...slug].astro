@@ -1,8 +1,9 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import { CollectionEntry, getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import RightSideBar from '@components/navigation/right-sidebar/index.astro';
 import LeftSideBar from '@components/navigation/left-sidebar/index.astro';
+import Tag from '@components/post/Tag.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection(
@@ -17,6 +18,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
+const tags = await Promise.all(post.data.tags?.map(async (tag) => (await getEntry(tag))?.data) || []);
 const { Content, headings } = await post.render();
 ---
 {
@@ -36,6 +38,7 @@ const { Content, headings } = await post.render();
 	<article class="markdown max-w-7xl px-6">
     <img src={post.data.heroImage} alt="post hero" class="w-full min-h-[100px] md:min-h-[200px] lg:min-h[300px]">
 		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
+    <div class="flex">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>
 		<Content />
 	</article>
 	<aside>

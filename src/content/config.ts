@@ -13,11 +13,11 @@ const blog = defineCollection({
 			.transform((val) => new Date(val)),
 		heroImage: z.string(),
 		draft: z.boolean().optional(),
-		tags: z.array(reference('tags')).optional().default([]),
+		tags: z.array(reference('tag')).optional(),
 	}),
 });
 
-const tags = defineCollection({
+const tag = defineCollection({
 	type: 'data',
 	schema: z.object({
 		name: z.string(),
@@ -26,4 +26,4 @@ const tags = defineCollection({
 	}),
 });
 
-export const collections = { blog, tags };
+export const collections = { blog, tag };
