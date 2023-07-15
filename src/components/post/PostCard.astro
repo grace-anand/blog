@@ -4,12 +4,12 @@ const { post } = Astro.props
 const { data: postData, slug } = post
 ---
 <a class="p-3" href={`/blog/${slug}/`}>
-  <!-- <div class="p2">
-    <img src="" alt="" class="h-16 w-full">
-  </div> -->
+  <div class="p-2">
+    <img src={postData.heroImage} alt="" class=rounded-sm">
+  </div>
   <div class="p-3">
     <h3 class="text-2xl text-bk-purple-300">{ postData.title }</h3>
-    <p>{ postData.description }</p>
+    <p class="line-clamp-3">{ postData.description }</p>
     <FormattedDate class="text-sm" date={postData.pubDate} />
   </div>
 </a>

@@ -34,6 +34,7 @@ const { Content, headings } = await post.render();
 		</div>
 	</aside>
 	<article class="markdown max-w-7xl px-6">
+    <img src={post.data.heroImage} alt="post hero" class="w-full min-h-[100px] md:min-h-[200px] lg:min-h[300px]">
 		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
 		<Content />
 	</article>
