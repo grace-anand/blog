@@ -73,7 +73,7 @@ Now let's call the procedure on our frontend. tRPC provides a wrapper for `@tans
 
 ```tsx:pages/users/[id].tsx
 import { useRouter } from "next/router";
-import { api } from "../../utils/api";
+import { api } from "@utils/api";
 
 const UserPage = () => {
   const { query } = useRouter();

@@ -20,7 +20,7 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 		text: toc[0]?.text,
 	});
 	const [open, setOpen] = useState(!isMobile);
-	const onThisPageID = 'on-this-page-heading';
+	const onThisPageID = 'toc-heading';
 
 	const Container = ({ children }: { children: ReactNode }) => {
 		return isMobile ? (

@@ -1,8 +1,8 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import RightSideBar from '../../components/navigation/right-sidebar/index.astro';
-import LeftSideBar from '../../components/navigation/left-sidebar/index.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import RightSideBar from '@components/navigation/right-sidebar/index.astro';
+import LeftSideBar from '@components/navigation/left-sidebar/index.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection(
