@@ -115,7 +115,7 @@
 }
 
 .markdown code {
-	@apply relative rounded bg-slate-800 text-white dark:text-secondary-foreground dark:bg-secondary px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+	@apply relative rounded bg-slate-800 text-white dark:text-secondary-foreground dark:bg-secondary px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold w-full border-bk-purple-1000 border-2;
 }
 
 .markdown .code-wrapper {
