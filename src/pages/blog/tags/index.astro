@@ -1,0 +1,22 @@
+---
+import BaseLayout from "layouts/BaseLayout.astro";
+import { getCollection, CollectionEntry } from 'astro:content';
+import NoiseBackground from "@layouts/NoiseBackground.astro";
+
+type Tags = CollectionEntry<'tag'>[]
+
+const tags: Tags = await getCollection('tag');
+---
+<BaseLayout>
+	<NoiseBackground>
+    <section class="max-w-7xl m-auto px-3">
+      <ul>
+        {tags.map((tag) => (
+          <li>
+            <a href={`/tags/${tag.data.slug}`}>{tag.data.name}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </NoiseBackground>
+</BaseLayout>

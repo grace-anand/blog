@@ -111,7 +111,7 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 			<li
 				className={`w-full list-none border-bk-purple-300/20 p-1 text-sm transition-colors duration-300 hover:border-bk-purple-300/50 ${
 					currentHeading.slug === slug
-						? 'border-bk-purple-300/100 dark:bg-bk-purple-300/20 bg-bk-purple-300/30'
+						? 'border-l-4 border-bk-purple-300/100 dark:bg-bk-purple-300/20 bg-bk-purple-300/30'
 						: ''
 				}`.trim()}
 			>

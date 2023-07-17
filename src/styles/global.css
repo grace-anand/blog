@@ -115,7 +115,7 @@
 }
 
 .markdown code {
-	@apply relative rounded bg-slate-800 text-white dark:text-secondary-foreground dark:bg-secondary px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold w-full border-bk-purple-1000 border-2;
+	@apply relative rounded text-white dark:text-secondary-foreground bg-primary px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold w-full;
 }
 
 .markdown .code-wrapper {
@@ -130,8 +130,9 @@
 	@apply mx-auto mb-3 rounded border border-bk-purple-300/80 p-2 pl-3 font-mono shadow-xl sm:pt-2;
 }
 
-.markdown pre {
-	@apply dark:bg-secondary !important;
+.markdown pre,
+pre > code {
+	@apply dark:bg-secondary bg-slate-800 !important;
 }
 
 .markdown ol {
