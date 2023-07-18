@@ -1,0 +1,37 @@
+---
+import BaseLayout from "layouts/BaseLayout.astro";
+import { getCollection, CollectionEntry } from 'astro:content';
+import NoiseBackground from "@layouts/NoiseBackground.astro";
+import GradientBg from '@components/cards/GradientBg.astro';
+
+type Tags = CollectionEntry<'tag'>[]
+type Post = Array<CollectionEntry<'blog'>>
+
+
+export async function getStaticPaths() {
+  const tags: Tags = await getCollection('tag');
+	return tags.map((tag) => ({
+		params: { tag: tag.id },
+		props: tag,
+	}));
+}
+
+const tag = Astro.props;
+const posts: Post = await getCollection('blog');
+const filteredPosts = posts.filter((post) => post.data.tags?.some((t) => t.id === tag.id));
+
+---
+<BaseLayout>
+	<NoiseBackground>
+		<GradientBg>
+			{
+				filteredPosts.map((post) => (
+						<a href={`/blog/${post.slug}`}>
+							<h1>{post.data.title}</h1>
+							<p>{post.data.description}</p>
+						</a>
+				))
+			}
+		</GradientBg>
+  </NoiseBackground>
+</BaseLayout>
