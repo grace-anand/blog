@@ -1,10 +1,16 @@
-<section>
+---
+export interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<section class={className}>
   <slot/>
 </section>
 
 <style>
   section {
-    height: 50vh;
     background-image: url('/src/assets/images/animated-gradient-bg.svg');
     background-size: cover;
   }

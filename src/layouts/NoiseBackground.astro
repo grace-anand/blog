@@ -4,6 +4,9 @@
 
 
 <style>
+  .noise{
+    overflow: clip;
+  }
   .noise::before {
     position: absolute;
     content: "";
@@ -24,6 +27,7 @@
     width: 100vw;
     top: 10%;
     right: -60vw;
+    object-fit: cover;
     background: url(https://astro.build/assets/noise.webp) repeat,linear-gradient(83.21deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
     background-blend-mode: overlay;
     -webkit-mask-image: radial-gradient(rgba(0,0,0,.4),transparent 65%);

@@ -3,6 +3,7 @@ import BaseLayout from "layouts/BaseLayout.astro";
 import { getCollection, CollectionEntry } from 'astro:content';
 import NoiseBackground from "@layouts/NoiseBackground.astro";
 import GradientBg from '@components/cards/GradientBg.astro';
+import PostCard from "@components/post/PostCard.astro";
 
 type Tags = CollectionEntry<'tag'>[]
 type Post = Array<CollectionEntry<'blog'>>
@@ -23,15 +24,14 @@ const filteredPosts = posts.filter((post) => post.data.tags?.some((t) => t.id ==
 ---
 <BaseLayout>
 	<NoiseBackground>
-		<GradientBg>
-			{
-				filteredPosts.map((post) => (
-						<a href={`/blog/${post.slug}`}>
-							<h1>{post.data.title}</h1>
-							<p>{post.data.description}</p>
-						</a>
-				))
-			}
+		<GradientBg class="max-w-7xl m-auto px-4">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+				{
+					filteredPosts.map((post) => (
+						<PostCard post={post} />
+					))
+				}
+			</div>
 		</GradientBg>
   </NoiseBackground>
 </BaseLayout>
