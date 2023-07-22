@@ -13,9 +13,9 @@ const { className } = Astro.props;
 	<head>
 		<BaseHead />
 	</head>
-	<body>
+	<body class="w-[100vw] max-w-full overflow-x-hidden">
 		<Header />
-		<main class=`min-h-[calc(100vh-150px)] ${className}`>
+		<main class=`min-h-[calc(100vh-150px)] ${className ?? ''}`>
 			<slot />
 		</main>
 		<Footer />
