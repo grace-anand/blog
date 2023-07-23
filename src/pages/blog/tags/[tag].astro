@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "layouts/BaseLayout.astro";
 import { getCollection, CollectionEntry } from 'astro:content';
-import GradientBg from '@components/cards/GradientBg.astro';
 import PostCard from "@components/post/PostCard.astro";
 
 type Tags = CollectionEntry<'tag'>[]
@@ -21,13 +20,11 @@ const posts: Post = await getCollection('blog');
 const filteredPosts = posts.filter((post) => post.data.tags?.some((t) => t.id === tag.id));
 ---
 <BaseLayout>
-		<GradientBg class="max-w-7xl m-auto px-4">
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-				{
-					filteredPosts.map((post) => (
-						<PostCard post={post} />
-					))
-				}
-			</div>
-		</GradientBg>
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl m-auto px-4">
+		{
+			filteredPosts.map((post) => (
+				<PostCard post={post} />
+			))
+		}
+	</div>
 </BaseLayout>

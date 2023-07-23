@@ -64,15 +64,15 @@ export default {
 				sm: 'calc(var(--radius) - 4px)',
 			},
 			keyframes: {
-				'accordion-down': {
-					from: { height: '0' },
-					to: { height: 'var(--radix-accordion-content-height)' },
-				},
-				'accordion-up': {
-					from: { height: 'var(--radix-accordion-content-height)' },
-					to: { height: '0' },
-				},
 				circular: {
+					'0%': {
+						transform: 'rotate(0deg) translate(190px) rotate(0deg)',
+					},
+					'100%': {
+						transform: 'rotate(360deg) translate(190px) rotate(-360deg)',
+					},
+				},
+				'circular-mid': {
 					'0%': {
 						transform: 'rotate(0deg) translate(190px) rotate(0deg)',
 					},
@@ -82,17 +82,22 @@ export default {
 				},
 				'circular-reverse': {
 					'0%': {
-						transform: 'rotate(0deg) translate(190px) rotate(0deg)',
+						transform: 'translate(0) scale(1)',
+					},
+					'33%': {
+						transform: 'translate(10%,-10%) scale(1.5)',
+					},
+					'66%': {
+						transform: 'translate(-20%,40%) scale(1.2)',
 					},
 					'100%': {
-						transform: 'rotate(-360deg) translate(190px) rotate(360deg)',
+						transform: 'tranlate(0,0) scale(1)',
 					},
 				},
 			},
 			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
 				circular: 'circular 10s infinite linear',
+				'circular-mid': 'circular-mid 10s infinite linear',
 				'circular-reverse': 'circular-reverse 10s infinite linear',
 			},
 		},
