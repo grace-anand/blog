@@ -39,7 +39,7 @@ tRPC contributor [trashh_dev](https://twitter.com/trashh_dev) made [a killer tal
 
 With tRPC, you write TypeScript functions on your backend, and then call them from your frontend. A simple tRPC procedure could look like this:
 
-```ts:server/api/routers/user.ts
+```ts title="server/api/routers/user.ts" caption="test" /input/ showLineNumbers
 const userRouter = createTRPCRouter({
   getById: publicProcedure.input(z.string()).query(({ ctx, input }) => {
     return ctx.prisma.user.findFirst({
@@ -49,6 +49,8 @@ const userRouter = createTRPCRouter({
     });
   }),
 });
++ added line
+- removed line
 ```
 
 This is a tRPC procedure (equivalent to a route handler in a traditional backend) that first validates the input using Zod (which is the same validation library that we use for [environment variables](./env-variables)) - in this case, it's making sure that the input is a string. If the input is not a string it will send an informative error instead.
@@ -57,7 +59,7 @@ After the input, we chain a resolver function which can be either a [query](http
 
 You define your procedures in `routers` which represent a collection of related procedures with a shared namespace. You may have one router for `users`, one for `posts`, and another one for `messages`. These routers can then be merged into a single, centralized `appRouter`:
 
-```ts:server/api/root.ts
+```ts title="server/api/routers/index.ts" caption="test" showLineNumbers
 const appRouter = createTRPCRouter({
   users: userRouter,
   posts: postRouter,
@@ -95,7 +97,7 @@ By default, `create-t3-app` sets up an [error formatter](https://trpc.io/docs/er
 
 Example usage:
 
-```tsx
+```tsx title="examle usage"
 function MyComponent() {
   const { mutate, error } = api.post.create.useMutation();
 
@@ -167,10 +169,10 @@ With regular APIs, you can call your endpoints using any HTTP client such as `cu
 
 If you want to expose a single procedure externally, you're looking for [server side calls](https://trpc.io/docs/v10/server-side-calls). That would allow you to create a normal Next.js API endpoint, but reuse the resolver part of your tRPC procedure.
 
-```ts:pages/api/users/[id].ts
-import { type NextApiRequest, type NextApiResponse } from "next";
-import { appRouter } from "../../../server/api/root";
-import { createTRPCContext } from "../../../server/api/trpc";
+```ts :pages/api/users/[id].ts
+import { type NextApiRequest, type NextApiResponse } from 'next';
+import { appRouter } from '../../../server/api/root';
+import { createTRPCContext } from '../../../server/api/trpc';
 
 const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create context and caller
@@ -188,7 +190,7 @@ const userByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
     // Another error occured
     console.error(cause);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
