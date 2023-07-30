@@ -30,18 +30,18 @@ const { Content, headings } = await post.render();
 	)
 }
 <BaseLayout {...post.data} className='flex justify-between mx-4'>
-	<aside>
+	<aside class="hidden xl:block min-w-[200px] pr-3">
 		<div class="sticky top-5">
 			<LeftSideBar/>
 		</div>
 	</aside>
-	<article class="markdown max-w-7xl px-6">
+	<article class="markdown max-w-7xl mx-auto">
     <img src={post.data.heroImage} alt="post hero" class="w-full min-h-[100px] md:min-h-[200px] lg:min-h[300px]">
 		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
     <div class="flex">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>
 		<Content />
 	</article>
-	<aside>
+	<aside class="hidden lg:block min-w-[200px] pl-3">
 		<div class="sticky top-5">
 			<RightSideBar headings={headings} />
 		</div>
