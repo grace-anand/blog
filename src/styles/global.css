@@ -115,15 +115,12 @@
 }
 
 .markdown code {
-	@apply relative rounded text-white dark:text-secondary-foreground bg-primary px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold w-full;
-}
-
-.markdown .code-wrapper {
-	@apply inline rounded border border-bk-purple-200 bg-bk-purple-200/40 px-0.5 py-[0.5px] dark:border-bk-purple-400/30 dark:bg-bk-purple-400/20;
+	@apply relative rounded text-white dark:text-secondary-foreground bg-[#282c34] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold w-full;
+	counter-reset: line;
 }
 
 .markdown [data-rehype-pretty-code-title] {
-	@apply z-10 -mb-1 mt-3 w-full rounded-t-md border border-bk-purple-300/80 bg-[#191724] px-2 py-1 font-mono text-bk-purple-200;
+	@apply z-10 -mb-1 mt-3 w-full rounded-t-md border border-bk-purple-300/80 bg-[#191724] px-2 py-1 font-mono text-white;
 }
 
 .markdown pre ~ [data-rehype-pretty-code-caption] {
@@ -139,12 +136,38 @@
 }
 
 .markdown pre > code [data-highlighted-chars] {
-	@apply bg-[#52525b80] rounded-sm p-1;
+	@apply dark:bg-[#52525b80] rounded-sm py-[2px] px-1 bg-bk-purple-800/50;
+}
+
+.markdown pre > code [data-highlighted-line] {
+	@apply dark:bg-bk-purple-1000/70 p-[2px] border-l-2 border-bk-purple-500 bg-bk-purple-800/50;
 }
 
 .markdown pre,
 pre > code {
-	@apply dark:bg-secondary bg-slate-800 !important;
+	@apply dark:bg-secondary bg-slate-800 grid overflow-x-auto !important;
+}
+
+[data-line]:has([data-chars-id='add']) {
+	@apply bg-green-700/50;
+}
+
+[data-line]:has([data-chars-id='add']) > [data-highlighted-chars] {
+	@apply hidden;
+}
+
+[data-line]:has([data-chars-id='del']) {
+	@apply bg-red-700/50;
+}
+
+[data-line]:has([data-chars-id='del']) > [data-highlighted-chars] {
+	@apply hidden;
+}
+
+.markdown pre > code > [data-line]::before {
+	@apply inline-block w-4 mr-4 text-right text-gray-400;
+	counter-increment: line;
+	content: counter(line);
 }
 
 .markdown ol {
