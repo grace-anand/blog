@@ -4,17 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import rehypePrettyCode from 'rehype-pretty-code';
-
-const prettyCodeOptions = {
-	theme: 'one-dark-pro',
-	tokensMap: {
-		fn: 'entity.name.function',
-		var: 'keyword',
-		str: 'string',
-		num: 'constant.numeric',
-		cmt: 'comment',
-	},
-};
+import prettyCodeOptions from './src/lib/utils/code/prettyCodeOptions';
 
 export default defineConfig({
 	site: 'https://graceanand.dev',

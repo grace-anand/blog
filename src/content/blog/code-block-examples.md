@@ -61,8 +61,14 @@ To use this feature, you need to add `/+ /#add{:js}` or `/- /#del{:js}` at the e
 ```md caption="The above code will be rendered as the following"
 This is a regular inline code example: `const a = 1;`
 This is a ts inline code example: `const a = 1;{:ts}`
-This is a function code example: `const a = 1;{:.fn}`
-This is a keyword code example: `const a = 1;{:.kw}`
+This is a function code example: `getSomething{:.fn}`
+This is a keyword code example: `someVarValue{:.var}`
+This is a string code example: `'some string'{:.str}`
+This is a number code example: `123{:.num}`
+This is a comment code example: `// some comment{:.cmt}`
+This is a punctuation code example: `;{:js}`
+This is a const code example: `const{:js}`
+This is a default code example: `something{:js}`
 ```
 
 This is a regular inline code example: `const a = 1;` <br />
