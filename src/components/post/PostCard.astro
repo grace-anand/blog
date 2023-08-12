@@ -7,7 +7,7 @@ export interface Props {
 const { post } = Astro.props;
 const { data: postData, slug } = post
 ---
-<a class="p-3 bg-card rounded-md" href={`/blog/${slug}/`}>
+<a class="p-3 bg-card rounded-md" href={`/${slug}/`}>
   <div class="p-2">
     <img src={postData.heroImage} alt="post img" class="rounded-sm">
   </div>

@@ -7,7 +7,7 @@ export interface Props {
 const { tag, size } = Astro.props
 ---
 <a
-  href={`/blog/tags/${tag.name.toLowerCase()}`}
+  href={`/tags/${tag.name.toLowerCase()}`}
   class={`${size === "sm" ? "text-sm" : "text-lg"} pr-2 group inline-flex`}
 >
   # {tag.name.toLowerCase()}
