@@ -13,7 +13,7 @@ const tags: Tags = await getCollection('tag');
       <ul>
         {tags.map((tag) => (
           <li>
-            <a href={`/blog/tags/${tag.data.slug}`}>{tag.data.name}</a>
+            <a href={`/tags/${tag.data.slug}`}>{tag.data.name}</a>
           </li>
         ))}
       </ul>
