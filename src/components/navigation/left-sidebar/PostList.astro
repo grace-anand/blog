@@ -1,0 +1,28 @@
+---
+export interface Props {
+  posts: {
+      title: string
+      items: {
+          title: string
+          link: string
+        }[]
+    }[]
+}
+
+const { posts } = Astro.props;
+---
+
+{
+  posts.map((list) => (
+    <div>
+      <h3 class="text-3xl my-2">{list.title}</h3>
+      <ul class="ml-1">
+        {list.items.map((item) => (
+          <li>
+            <a href={'/' + item.link}>{item.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))
+}

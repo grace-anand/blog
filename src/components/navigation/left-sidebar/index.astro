@@ -1,7 +1,44 @@
 ---
-import PostDetails from "./PostDetails.astro";
 import ShareSection from "./ShareSection.astro";
+import PostList from "./PostList.astro";
+import type { CollectionEntry } from 'astro:content';
+
+type Tag = Array<CollectionEntry<'tag'>>
+type Post = Array<CollectionEntry<'blog'>>
+export interface Props {
+  posts: Post
+}
+
+const { posts } = Astro.props;
+
+const categorizedArticles = posts.reduce(
+  (acc, post) => {
+    const { slug: fullSlug, data } = post;
+    
+    if (fullSlug.includes("/")) {
+      const [category] = fullSlug.split("/");
+      const existingCategory = acc.find((c) => c.title === category);
+      if (existingCategory) {
+        existingCategory.items.push({ link: fullSlug, title: data.title });
+      } else {
+        acc.push({
+          title: category!,
+          items: [{ link: fullSlug, title: data.title }],
+        });
+      }
+    } else {
+      acc[0]?.items.push({ link: fullSlug, title: data.title });
+    }
+    return acc;
+  },
+  [
+    {
+      title: "Other articles",
+      items: [],
+    }
+  ]
+)
 ---
 
-<PostDetails />
 <ShareSection />
+<PostList posts={categorizedArticles}/>

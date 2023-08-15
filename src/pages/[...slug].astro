@@ -4,12 +4,13 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import RightSideBar from '@components/navigation/right-sidebar/index.astro';
 import LeftSideBar from '@components/navigation/left-sidebar/index.astro';
 import Tag from '@components/post/Tag.astro';
+import PostDetails from '@components/post/PostDetails.astro';
 
 export async function getStaticPaths() {
-	const posts = await getCollection(
-		'blog',
-		({ data }) => process.env.NODE_ENV !== 'production' || !data.draft
-	);
+  const posts = await getCollection(
+    'blog',
+    ({ data }) => process.env.NODE_ENV !== 'production' || !data.draft
+  );
 	return posts.map((post) => ({
 		params: { slug: post.slug },
 		props: post,
@@ -17,6 +18,10 @@ export async function getStaticPaths() {
 }
 type Props = CollectionEntry<'blog'>;
 
+const posts = await getCollection(
+  'blog',
+  ({ data }) => process.env.NODE_ENV !== 'production' || !data.draft
+);
 const post = Astro.props;
 const tags = await Promise.all(post.data.tags?.map(async (tag) => (await getEntry(tag))?.data) || []);
 const { Content, headings } = await post.render();
@@ -32,12 +37,13 @@ const { Content, headings } = await post.render();
 <BaseLayout {...post.data} className='flex justify-between mx-4'>
 	<aside class="hidden xl:block min-w-[200px] pr-3">
 		<div class="sticky top-5">
-			<LeftSideBar/>
+			<LeftSideBar posts={posts} />
 		</div>
 	</aside>
 	<article class="markdown max-w-7xl mx-auto">
     <img src={post.data.heroImage} alt="post hero" class="w-full min-h-[100px] md:min-h-[200px] lg:min-h[300px]">
 		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
+    <PostDetails pubTimestamp='2 hours ago'/>
     <div class="flex">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>
 		<Content />
 	</article>

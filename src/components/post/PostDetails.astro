@@ -1,0 +1,19 @@
+---
+export interface Props {
+  pubTimestamp: string;
+}
+const { pubTimestamp } = Astro.props;
+---
+
+<div class="flex items-center">
+	<img
+		src="https://avatars.githubusercontent.com/u/95082903?s=48&v=4"
+		alt="anand"
+		class="w-12 h-12 rounded-full mr-4"
+	/>
+	<div class="text-sm flex">
+		<div class="text-gray-500 ml-1">@anand</div>
+		<div class="text-gray-500 ml-1">•</div>
+		<div class="text-gray-500 ml-1">{pubTimestamp}</div>
+	</div>
+</div>
