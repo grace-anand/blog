@@ -8,7 +8,7 @@ draft: true
 
 ## Title example
 
-```ts title="📄 calcs/add.ts"
+```ts title="📄 calcs/add.ts" showLineNumbers
 function sum(a: number, b: number) {
   console.log(a + b);
   return a + b;
@@ -17,7 +17,7 @@ function sum(a: number, b: number) {
 
 ## Line highlight example
 
-```ts {1-2,4}
+```ts {1-2,4} showLineNumbers
 const a = 1;
 const b = 2;
 // Sum of a and b
@@ -27,7 +27,7 @@ console.log('🚀 c:', c);
 
 ## Word highlight example
 
-```ts /a + b/ /a = 1/ /b = 2/
+```ts showLineNumbers /a + b/ /a = 1/ /b = 2/
 const a = 1;
 const b = 2;
 // Sum of a and b
@@ -37,7 +37,7 @@ console.log('🚀 c:', c);
 
 ## Caption example
 
-```ts caption="💡 The above code is a simple example of a sum"
+```ts caption="💡 The above code is a simple example of a sum" showLineNumbers
 const a = 1;
 const b = 2;
 // Sum of a and b
@@ -51,14 +51,31 @@ console.log('🚀 c:', c);
 
 To use this feature, you need to add `/+ /#add{:js}` or `/- /#del{:js}` at the end of the code block language and then prepend `+ ` or `- ` to the line you want to add or remove.
 
-```ts /+ /#add /- /#del
+```ts showLineNumbers /+ /#add /- /#del
 + added line
 - removed line
 ```
 
+## Code diff example
+
+```diff
+const a = 1;
+const b = 2;
+# Delete this line and replace it with the following line
+- const c = a + b;
++ const c = a - b;
+console.log('🚀 c:', c);
+```
+
+## Bash example
+
+```sh
+npm init -y
+```
+
 ## Inline code example
 
-```md caption="The above code will be rendered as the following"
+```md caption="The above code will be rendered as the following" showLineNumbers
 This is a regular inline code example: `const a = 1;`
 This is a ts inline code example: `const a = 1;{:ts}`
 This is a function code example: `getSomething{:.fn}`
@@ -84,4 +101,4 @@ This is a default code example: `something{:js}` // red <br />
 
 ## Library I use
 
-I'm using a library called `rehype-pretty-code` to add extra features to code blocks. You can find the library [here](https://rehype-pretty-code.netlify.app/).
+I'm using a library called `rehype-pretty-code` to add extra features to code blocks. You can find the library <a href="https://rehype-pretty-code.netlify.app/" target="_blank">here</a>

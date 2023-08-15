@@ -140,7 +140,7 @@
 }
 
 .markdown pre > code [data-highlighted-line] {
-	@apply dark:bg-bk-purple-1000/70 p-[2px] border-l-2 border-bk-purple-500 bg-bk-purple-800/50;
+	@apply dark:bg-bk-purple-1000/70 p-[2px] border-l-2 border-bk-purple-500 bg-bk-purple-800/50 -ml-1;
 }
 
 .markdown pre,
@@ -164,10 +164,16 @@ pre > code {
 	@apply hidden;
 }
 
-.markdown pre > code > [data-line]::before {
+.markdown pre > code[data-line-numbers] > [data-line]::before {
 	@apply inline-block w-4 mr-4 text-right text-gray-400;
 	counter-increment: line;
 	content: counter(line);
+}
+
+.markdown pre > code[data-language='bash'] > [data-line]::before,
+.markdown pre > code[data-language='sh'] > [data-line]::before {
+	@apply inline-block w-4 mr-4 text-right text-gray-400;
+	content: '$';
 }
 
 .markdown ol {
