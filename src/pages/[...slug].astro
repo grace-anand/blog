@@ -1,5 +1,5 @@
 ---
-import { CollectionEntry, getCollection, getEntry } from 'astro:content';
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import RightSideBar from '@components/navigation/right-sidebar/index.astro';
 import LeftSideBar from '@components/navigation/left-sidebar/index.astro';
@@ -41,7 +41,7 @@ const { Content, headings } = await post.render();
 		</div>
 	</aside>
 	<article class="markdown max-w-7xl mx-auto">
-    <img src={post.data.heroImage} alt="post hero" class="w-full min-h-[100px] md:min-h-[200px] lg:min-h[300px]">
+    <img src={post.data.heroImage} alt="post hero" class="w-full min-h-[100px] md:min-h-[200px] lg:min-h[300px]" transition:name={post.slug}>
 		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
     <PostDetails pubTimestamp='2 hours ago'/>
     <div class="flex">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>

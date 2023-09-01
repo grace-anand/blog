@@ -14,7 +14,4 @@ export default defineConfig({
 		rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
 		shikiConfig: { theme: 'one-dark-pro' },
 	},
-	experimental: {
-		assets: true,
-	},
 });
