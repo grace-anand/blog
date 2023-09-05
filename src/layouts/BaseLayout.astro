@@ -6,13 +6,14 @@ import { ViewTransitions } from 'astro:transitions';
 
 export interface Props {
 	className?: string;
+	image?: string;
 }
-const { className } = Astro.props;
+const { className, image } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead />
+		<BaseHead image={image || ''} />
 		<ViewTransitions />
 	</head>
 	<body class="w-[100vw] max-w-full overflow-x-hidden">

@@ -34,7 +34,7 @@ const { Content, headings } = await post.render();
 		</div>
 	)
 }
-<BaseLayout {...post.data} className='flex justify-between mx-4'>
+<BaseLayout {...post.data} image={post.data.title + '.png'} className='flex justify-between mx-4'>
 	<aside class="hidden xl:block min-w-[200px] pr-3">
 		<div class="sticky top-5">
 			<LeftSideBar posts={posts} />

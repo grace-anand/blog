@@ -33,7 +33,7 @@ const appDescription = description || SITE_DESCRIPTION;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={appTitle} />
 <meta property="og:description" content={appDescription} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(image, import.meta.env.APP_URL)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
