@@ -7,7 +7,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import prettyCodeOptions from './src/lib/utils/code/prettyCodeOptions';
 
 export default defineConfig({
-	site: 'https://graceanand.dev',
+	site: 'https://anandr.vercel.app',
 	integrations: [mdx(), sitemap(), react(), tailwind()],
 	markdown: {
 		syntaxHighlight: false,

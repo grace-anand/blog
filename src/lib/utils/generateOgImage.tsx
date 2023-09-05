@@ -2,16 +2,6 @@ import satori, { type SatoriOptions } from 'satori';
 import { writeFile } from 'node:fs/promises';
 import { Resvg } from '@resvg/resvg-js';
 
-const SITE = {
-	website: 'https://graceanand.dev',
-	author: 'Anand',
-	desc: "Grace Anand's Personal Website",
-	title: 'Grace Anand',
-	ogImage: 'assets/ogImage.png',
-	lightAndDarkMode: true,
-	postPerPage: 3,
-};
-
 const fetchFonts = async () => {
 	// Regular Font
 	const fontFileRegular = await fetch(
@@ -34,12 +24,13 @@ const ogImage = (text: string) => {
 	return (
 		<div
 			style={{
-				background: '#fefbfb',
+				background: '#181818',
 				width: '100%',
 				height: '100%',
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
+				color: '#fff',
 			}}
 		>
 			<div
@@ -47,8 +38,8 @@ const ogImage = (text: string) => {
 					position: 'absolute',
 					top: '-1px',
 					right: '-1px',
-					border: '4px solid #000',
-					background: '#ecebeb',
+					border: '4px solid #fff',
+					background: '#181818',
 					opacity: '0.9',
 					borderRadius: '4px',
 					display: 'flex',
@@ -61,8 +52,8 @@ const ogImage = (text: string) => {
 
 			<div
 				style={{
-					border: '4px solid #000',
-					background: '#fefbfb',
+					border: '4px solid #fff',
+					background: '#181818',
 					borderRadius: '4px',
 					display: 'flex',
 					justifyContent: 'center',
@@ -109,10 +100,14 @@ const ogImage = (text: string) => {
 							>
 								"
 							</span>
-							<span style={{ overflow: 'hidden', fontWeight: 'bold' }}>{SITE.author}</span>
+							<span style={{ overflow: 'hidden', fontWeight: 'bold' }}>Anand</span>
 						</span>
-
-						<span style={{ overflow: 'hidden', fontWeight: 'bold' }}>{SITE.title}</span>
+						<img
+							src="https://i.ibb.co/NZdTTsL/bnw-logo.png"
+							width={50}
+							height={50}
+							style={{ borderRadius: '50%' }}
+						/>
 					</div>
 				</div>
 			</div>
@@ -140,7 +135,7 @@ const options: SatoriOptions = {
 	],
 };
 
-const generateOgImage = async (mytext = SITE.title) => {
+const generateOgImage = async (mytext = 'my textt') => {
 	const svg = await satori(ogImage(mytext), options);
 
 	// render png in production mode
