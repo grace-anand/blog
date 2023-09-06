@@ -10,13 +10,15 @@ const ThemeToggler = () => {
 
 	useEffect(() => {
 		const root = document.documentElement;
-		document.addEventListener('astro:after-swap', () => {
+		function applyTheme() {
 			if (theme === 'light') {
 				root.classList.remove('dark');
 			} else {
 				root.classList.add('dark');
 			}
-		});
+		}
+		applyTheme();
+		document.addEventListener('astro:after-swap', applyTheme);
 	}, [theme]);
 
 	return (

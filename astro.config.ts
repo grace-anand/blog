@@ -14,4 +14,9 @@ export default defineConfig({
 		rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
 		shikiConfig: { theme: 'one-dark-pro' },
 	},
+	vite: {
+		optimizeDeps: {
+			exclude: ['@resvg/resvg-js'],
+		},
+	},
 });
