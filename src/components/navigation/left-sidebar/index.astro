@@ -1,5 +1,4 @@
 ---
-import ShareSection from "./ShareSection.astro";
 import PostList from "./PostList.astro";
 import type { CollectionEntry } from 'astro:content';
 
@@ -21,13 +20,13 @@ const categorizedArticles = posts.reduce(
       if (existingCategory) {
         existingCategory.items.push({ link: fullSlug, title: data.title });
       } else {
-        acc.push({
+        acc.unshift({
           title: category!,
           items: [{ link: fullSlug, title: data.title }],
         });
       }
     } else {
-      acc[0]?.items.push({ link: fullSlug, title: data.title });
+      acc[acc.length - 1]?.items.push({ link: fullSlug, title: data.title });
     }
     return acc;
   },
@@ -40,5 +39,4 @@ const categorizedArticles = posts.reduce(
 )
 ---
 
-<ShareSection />
 <PostList posts={categorizedArticles}/>

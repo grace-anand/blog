@@ -10,16 +10,29 @@ export interface Props {
 }
 
 const { posts } = Astro.props;
+const { pathname } = Astro.url;
 ---
-
 {
   posts.map((list) => (
-    <div>
-      <h3 class="text-3xl my-2">{list.title}</h3>
-      <ul class="ml-1">
+    <div class="my-2">
+      <h3>{list.title}</h3>
+      <ul>
         {list.items.map((item) => (
-          <li>
-            <a href={'/' + item.link}>{item.title}</a>
+          <li
+            class={
+              `w-full list-none border-bk-purple-300/20 p-2 text-sm transition-colors duration-300 hover:border-bk-purple-300/50 
+              ${ pathname === `/${item.link}` || pathname === `/${item.link}/` ? 'border-l-4 border-bk-purple-300/100 dark:bg-bk-purple-300/20 bg-bk-purple-300/30' : '' }`
+            }
+          >
+            <a
+              class={
+                `text-bk-purple-800 hover:text-bk-purple-400 dark:text-bk-purple-200 dark:hover:text-bk-purple-100 
+                ${ pathname === '/' + item.link ? 'font-medium text-bk-purple-700 dark:text-bk-purple-100' : '' }`
+              } 
+              href={'/' + item.link}
+            >
+              {item.title}
+            </a>
           </li>
         ))}
       </ul>
