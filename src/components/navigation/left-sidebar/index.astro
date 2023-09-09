@@ -1,27 +1,36 @@
 ---
 import PostList from "./PostList.astro";
-import type { CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
-type Tag = Array<CollectionEntry<'tag'>>
+type Category = CollectionEntry<'category'>['data'];
 type Post = Array<CollectionEntry<'blog'>>
+type PostList = Array<{ title: string, items: Array<{ link: string, title: string }> }>
+
+
+const categories = await getCollection('category');
+const categoriesMap = new Map<string, Category>();
+categories.forEach((category) => {
+  categoriesMap.set(category.id, category.data);
+});
+
 export interface Props {
   posts: Post
 }
 
 const { posts } = Astro.props;
 
-const categorizedArticles = posts.reduce(
-  (acc, post) => {
+const categorizedArticles = posts.reduce((acc : PostList, post: Post[number]) => {
     const { slug: fullSlug, data } = post;
-    
+
     if (fullSlug.includes("/")) {
       const [category] = fullSlug.split("/");
       const existingCategory = acc.find((c) => c.title === category);
+
       if (existingCategory) {
         existingCategory.items.push({ link: fullSlug, title: data.title });
       } else {
         acc.unshift({
-          title: category!,
+          title: categoriesMap.get(category!)?.name || category!,
           items: [{ link: fullSlug, title: data.title }],
         });
       }
@@ -33,7 +42,7 @@ const categorizedArticles = posts.reduce(
   [
     {
       title: "Other articles",
-      items: [],
+      items: []
     }
   ]
 )

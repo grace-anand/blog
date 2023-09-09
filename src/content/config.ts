@@ -21,9 +21,17 @@ const tag = defineCollection({
 	type: 'data',
 	schema: z.object({
 		name: z.string(),
-		slug: z.string(),
-		imageUrl: z.string(),
+		imageUrl: z.string().optional(),
+		description: z.string(),
 	}),
 });
 
-export const collections = { blog, tag };
+const category = defineCollection({
+	type: 'data',
+	schema: z.object({
+		name: z.string(),
+		imageUrl: z.string().optional(),
+	}),
+});
+
+export const collections = { blog, tag, category };
