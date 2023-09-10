@@ -56,6 +56,12 @@ The blockquote element represents content that is quoted from another source, op
 
 [^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
+#### Another attribution example
+
+Test by me[^2] <cite>Test</cite>
+
+[^2]: Test
+
 ## Tables
 
 | Italics   | Bold     | Code   |
@@ -124,3 +130,7 @@ Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the ses
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 
 Test <mark>mark tag</mark>
+
+## External Links
+
+This is an external link: [Google](https://google.com)
