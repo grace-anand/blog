@@ -6,6 +6,8 @@ import LeftSideBar from '@components/navigation/left-sidebar/index.astro';
 import Tag from '@components/post/Tag.astro';
 import PostDetails from '@components/post/PostDetails.astro';
 import ShareSection from '@components/navigation/right-sidebar/ShareSection.astro';
+import TableOfContents from '@components/navigation/right-sidebar/TableOfContents';
+import generateToc from '@lib/utils/generateToc';
 
 export async function getStaticPaths() {
   const posts = await getCollection(
@@ -46,6 +48,12 @@ const { Content, headings } = await post.render();
 		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
     <PostDetails pubTimestamp='2 hours ago'/>
     <div class="flex">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>
+    <TableOfContents
+      toc={generateToc(headings, 'Overview')}
+      labels={{ onThisPage: 'Table Of Contents' }}
+      isMobile={true}
+      client:media="(max-width: 1024px)"
+    />
 		<Content />
     <ShareSection class="flex lg:hidden" />
 	</article>

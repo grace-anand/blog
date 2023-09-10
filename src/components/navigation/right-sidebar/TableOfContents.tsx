@@ -27,7 +27,7 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 			<details
 				{...{ open }}
 				onToggle={(e: React.MouseEvent<HTMLDetailsElement>) => setOpen(e.currentTarget.open)}
-				className="toc-mobile-container"
+				className="lg:hidden sticky top-2 z-10"
 			>
 				{children}
 			</details>
@@ -38,27 +38,24 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 
 	const HeadingContainer = ({ children }: { children: ReactNode }) => {
 		return isMobile ? (
-			<summary className="">
-				<div className="">
-					<div className="">
-						{children}
+			<summary>
+				<div className="inline-block">{children}</div>
+				{!open && currentHeading?.slug !== 'overview' && (
+					<span className="text-foreground pb-1">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 1 16 16"
-							width="16"
-							height="16"
 							aria-hidden="true"
+							className="fill-foreground w-4 h-4 inline-block"
 						>
 							<path
 								fillRule="evenodd"
 								d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"
 							></path>
 						</svg>
-					</div>
-					{!open && currentHeading?.slug !== 'overview' && (
-						<span className="">{unescape(currentHeading?.text || '')}</span>
-					)}
-				</div>
+						{unescape(currentHeading?.text || '')}
+					</span>
+				)}
 			</summary>
 		) : (
 			children
@@ -109,7 +106,8 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 		const { slug, text, children } = heading;
 		return (
 			<li
-				className={`w-full list-none border-bk-purple-300/20 p-1 text-sm transition-colors duration-300 hover:border-bk-purple-300/50 ${
+				style={{ listStyle: 'none' }}
+				className={`w-full border-bk-purple-300/20 p-1 text-sm transition-colors duration-300 hover:border-bk-purple-300/50 ${
 					currentHeading.slug === slug
 						? 'border-l-4 border-bk-purple-300/100 dark:bg-bk-purple-300/20 bg-bk-purple-300/30'
 						: ''
@@ -140,11 +138,12 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 	return (
 		<Container>
 			<HeadingContainer>
-				<h2 className="heading" id={onThisPageID}>
+				<h4 style={{ margin: 0, padding: 0 }} id={onThisPageID} className="flex items-center">
 					{labels.onThisPage}
-				</h2>
+					<span className="sr-only">:</span>
+				</h4>
 			</HeadingContainer>
-			<ul className="list-none">
+			<ul>
 				{toc.map((heading2) => (
 					<TableOfContentsItem key={heading2.slug} heading={heading2} />
 				))}

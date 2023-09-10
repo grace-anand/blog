@@ -5,15 +5,6 @@ pubDate: 'Jul 01 2022'
 heroImage: '/placeholder-hero.jpg'
 ---
 
-<details><summary>Open Table of Content</summary><p></p>
-<p>Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.</p>
-<p></p></details>
-
-<details><summary>Open Table of Contem</summary><p></p>
-<p>Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.</p>
-<p></p></details>
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
-
 ## Headings
 
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
@@ -39,6 +30,15 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 ## Images
 
 ![This is a placeholder image description](/placeholder-social.jpg)
+
+## Details
+
+<details>
+  <summary>Click to expand!</summary>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+  </p>
+</details>
 
 ## Blockquotes
 

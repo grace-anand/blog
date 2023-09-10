@@ -96,7 +96,7 @@
 	@apply mt-2 mb-1 scroll-m-20 text-base font-semibold tracking-tight;
 }
 .markdown li {
-	@apply list-disc text-slate-900 dark:text-white;
+	@apply list-disc text-slate-900 dark:text-white ml-5;
 }
 .markdown ol > li {
 	@apply mb-2 list-decimal;
@@ -182,9 +182,6 @@ pre > code {
 
 .markdown details {
 	@apply mt-2 w-full rounded-md border border-bk-purple-300/80 bg-[#191724] px-3 transition-all duration-300 ease-in-out;
-}
-.markdown details[open] {
-	@apply bg-bk-purple-200/10;
 }
 .markdown details pre {
 	@apply border-0 shadow-none;
