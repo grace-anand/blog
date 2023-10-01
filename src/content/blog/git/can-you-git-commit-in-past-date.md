@@ -1,5 +1,5 @@
 ---
-title: 'Can you git commit in past date?'
+title: 'This is how you can git commit in past date
 description: 'TLDR: Yes, you can. Let me show you how.'
 pubDate: 'Oct 01 2023'
 heroImage: '/placeholder-hero.jpg'
