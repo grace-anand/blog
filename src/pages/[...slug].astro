@@ -44,7 +44,7 @@ const { Content, headings } = await post.render();
 		</div>
 	</aside>
 	<article class="markdown max-w-7xl">
-    <img src={post.data.heroImage} alt="post hero" class="w-full min-h-[100px] md:min-h-[200px] lg:min-h[300px]" transition:name={post.slug}>
+    <img src={post.data.heroImage} alt="post hero" class="w-full aspect-video" transition:name={post.slug}>
 		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
     <PostDetails pubTimestamp='2 hours ago'/>
     <div class="flex">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>
