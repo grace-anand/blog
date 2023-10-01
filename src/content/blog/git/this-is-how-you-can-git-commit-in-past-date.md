@@ -1,10 +1,12 @@
 ---
-title: 'This is how you can git commit in past date
-description: 'TLDR: Yes, you can. Let me show you how.'
+title: 'This is how you can git commit in past date'
+description: 'Can you commit in past date? TLDR; Yes, you can. Let me show you how.'
 pubDate: 'Oct 01 2023'
 heroImage: '/placeholder-hero.jpg'
 tags: ['tips']
 ---
+
+Can you commit in past date? TLDR; Yes, you can. Let me show you how.
 
 ## Types of commit date
 
