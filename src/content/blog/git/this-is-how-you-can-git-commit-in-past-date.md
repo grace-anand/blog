@@ -21,6 +21,7 @@ It is also shown in the contributor graph in GitHub like below.
 <figcaption>GitHub contributor graph</figcaption>
 <img src="/blog/git/github-contributor-graph-dark.png" alt="GitHub contributor graph" class="dark:block hidden mx-auto" />
 <img src="/blog/git/github-contributor-graph.png" alt="GitHub commit page" class="dark:hidden mx-auto"/>
+
 The author date can be changed by using `--date` option in `git commit` command.
 
 ```bash

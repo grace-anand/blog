@@ -1,8 +1,11 @@
 ---
+import { formatDistance } from 'date-fns'
+
 export interface Props {
-  pubTimestamp: string;
+  pubTimestamp: Date;
 }
 const { pubTimestamp } = Astro.props;
+const publishedAt = formatDistance(new Date(pubTimestamp), new Date(), { addSuffix: true })
 ---
 
 <div class="flex items-center">
@@ -14,6 +17,6 @@ const { pubTimestamp } = Astro.props;
 	<div class="text-sm flex">
 		<div class="text-gray-500 ml-1">@anand</div>
 		<div class="text-gray-500 ml-1">•</div>
-		<div class="text-gray-500 ml-1">{pubTimestamp}</div>
+		<div class="text-gray-500 ml-1">{publishedAt}</div>
 	</div>
 </div>
