@@ -1,0 +1,19 @@
+---
+import BaseLayout from "layouts/BaseLayout.astro";
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+type Authors = CollectionEntry<'author'>[]
+
+const authors: Authors = await getCollection('author');
+---
+<BaseLayout>
+    <section class="max-w-7xl m-auto px-3">
+      <ul>
+        {authors.map((author) => (
+          <li>
+            <a href={`/authors/${author.id}`}>{author.data.name}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+</BaseLayout>

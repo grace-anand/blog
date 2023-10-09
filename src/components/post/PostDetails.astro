@@ -1,11 +1,16 @@
 ---
 import { formatDistance } from 'date-fns'
+import { type CollectionEntry } from 'astro:content';
+
+
+type Authors = CollectionEntry<'author'>[]
 
 export interface Props {
   pubTimestamp: Date;
 	className: string;
+	authorDetails: Authors[0];
 }
-const { pubTimestamp, className } = Astro.props;
+const { pubTimestamp, className, authorDetails } = Astro.props;
 const publishedAt = formatDistance(new Date(pubTimestamp), new Date(), { addSuffix: true })
 ---
 
@@ -16,8 +21,8 @@ const publishedAt = formatDistance(new Date(pubTimestamp), new Date(), { addSuff
 		class="w-12 h-12 rounded-full mr-4"
 	/>
 	<div class="text-sm flex">
-		<div class="text-gray-500 ml-1">@anand</div>
-		<div class="text-gray-500 ml-1">•</div>
-		<div class="text-gray-500 ml-1">{publishedAt}</div>
+		<a class="text-gray-500 ml-1" href={`/authors/${authorDetails.id}`}>@{authorDetails.id}</a>
+		<p class="text-gray-500 ml-1">•</p>
+		<p class="text-gray-500 ml-1">{publishedAt}</p>
 	</div>
 </div>

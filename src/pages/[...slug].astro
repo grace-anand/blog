@@ -46,7 +46,7 @@ const { Content, headings } = await post.render();
 	<article class="markdown max-w-7xl">
     <img src={post.data.heroImage} alt="post hero" class="w-full aspect-video" transition:name={post.slug}>
     <div class="flex mt-2">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>
-    <PostDetails className="mt-2" pubTimestamp={post.data.pubDate}/>
+    <PostDetails className="mt-2" pubTimestamp={post.data.pubDate} authorDetails={post.data.author}/>
 		<h1 id="overview" class="text-4xl m-0">{post.data.title}</h1>
     <p>{post.data.description}</p>
     <TableOfContents

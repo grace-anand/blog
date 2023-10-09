@@ -4,6 +4,7 @@ description: 'Can you commit in past date? TLDR; Yes, you can. Let me show you h
 pubDate: 'Oct 01 2023'
 heroImage: '/placeholder-hero.jpg'
 tags: ['tips']
+author: 'anand'
 ---
 
 ## Types of commit date
