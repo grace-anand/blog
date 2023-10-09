@@ -3,12 +3,13 @@ import { formatDistance } from 'date-fns'
 
 export interface Props {
   pubTimestamp: Date;
+	className: string;
 }
-const { pubTimestamp } = Astro.props;
+const { pubTimestamp, className } = Astro.props;
 const publishedAt = formatDistance(new Date(pubTimestamp), new Date(), { addSuffix: true })
 ---
 
-<div class="flex items-center">
+<div class={`flex items-center ${className}`}>
 	<img
 		src="https://avatars.githubusercontent.com/u/95082903?s=48&v=4"
 		alt="anand"

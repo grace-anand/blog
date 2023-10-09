@@ -45,9 +45,10 @@ const { Content, headings } = await post.render();
 	</aside>
 	<article class="markdown max-w-7xl">
     <img src={post.data.heroImage} alt="post hero" class="w-full aspect-video" transition:name={post.slug}>
-		<h1 id="overview" class="text-4xl">{post.data.title}</h1>
-    <PostDetails pubTimestamp={post.data.pubDate}/>
-    <div class="flex">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>
+    <div class="flex mt-2">{ tags.map((tag) => (<Tag tag={tag} />)) }</div>
+    <PostDetails className="mt-2" pubTimestamp={post.data.pubDate}/>
+		<h1 id="overview" class="text-4xl m-0">{post.data.title}</h1>
+    <p>{post.data.description}</p>
     <TableOfContents
       toc={generateToc(headings, 'Overview')}
       labels={{ onThisPage: 'Table Of Contents' }}

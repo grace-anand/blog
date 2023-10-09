@@ -3,6 +3,7 @@ const { headings } = Astro.props;
 import TableOfContents from "./TableOfContents";
 import generateToc from "@lib/utils/generateToc";
 import ShareSection from "./ShareSection.astro";
+import EditSection from "./EditSection.astro";
 ---
 {
   headings && (
@@ -14,3 +15,4 @@ import ShareSection from "./ShareSection.astro";
   )
 }
 <ShareSection class="mt-2"/>
+<EditSection class="mt-2"/>

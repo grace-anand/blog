@@ -84,10 +84,10 @@
 	@apply flex w-full flex-col items-start justify-start leading-relaxed text-slate-900 selection:bg-bk-purple-200 selection:text-bk-purple-500 dark:text-bk-purple-100 dark:selection:bg-bk-purple-100 dark:selection:text-slate-900;
 }
 .markdown h1 {
-	@apply mt-8 mb-4 scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl;
+	@apply mt-6 mb-3 scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl;
 }
 .markdown h2 {
-	@apply mt-8 mb-4 scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0;
+	@apply mt-5 mb-2 scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0;
 }
 .markdown h3 {
 	@apply mt-4 mb-2 scroll-m-20 text-xl font-semibold tracking-tight;
