@@ -138,7 +138,7 @@ const TableOfContents = ({ toc = [], labels, isMobile }: Props) => {
 	return (
 		<Container>
 			<HeadingContainer>
-				<h4 style={{ margin: 0, padding: 0 }} id={onThisPageID} className="flex items-center">
+				<h4 style={{ padding: 0 }} id={onThisPageID} className="flex items-center text-xl mb-2">
 					{labels.onThisPage}
 					<span className="sr-only">:</span>
 				</h4>

@@ -18,9 +18,40 @@ const { className, image } = Astro.props;
 	</head>
 	<body class="w-[100vw] max-w-full overflow-x-hidden">
 		<Header />
-		<main class=`min-h-[calc(100vh-150px)] ${className ?? ''}`>
+		<main class=`min-h-[calc(100vh-150px)]  ${className ?? ''}`>
+			<div class="noise overflow-clip fixed h-screen w-screen -z-50"></div>
 			<slot />
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+  .noise::before {
+    position: absolute;
+    content: "";
+    height: 100vh;
+    width: 100vw;
+    top: 10%;
+    left: -60vw;
+    background: url(/noise-bg.webp) repeat,linear-gradient(83.21deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    background-blend-mode: overlay;
+    -webkit-mask-image: radial-gradient(rgba(0,0,0,.4),transparent 65%);
+    mask-image: radial-gradient(rgba(0,0,0,.4),transparent 65%);
+    z-index: -10;
+  }
+  .noise::after {
+    position: absolute;
+    content: "";
+    height: 100vh;
+    width: 100vw;
+    top: 10%;
+    right: -60vw;
+    object-fit: cover;
+    background: url(/noise-bg.webp) repeat,linear-gradient(83.21deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
+    background-blend-mode: overlay;
+    -webkit-mask-image: radial-gradient(rgba(0,0,0,.4),transparent 65%);
+    mask-image: radial-gradient(rgba(0,0,0,.4),transparent 65%);
+    z-index: -10;
+  }
+</style>
