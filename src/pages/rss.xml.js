@@ -13,6 +13,7 @@ export async function get(context) {
 		site: context.site,
 		items: posts.map((post) => ({
 			...post.data,
+			author: post.data.author.name,
 			link: `/${post.slug}/`,
 		})),
 	});
