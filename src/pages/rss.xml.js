@@ -13,7 +13,7 @@ export async function get(context) {
 		site: context.site,
 		items: posts.map((post) => ({
 			...post.data,
-			author: post.data.author.name,
+			author: post.data.author.name, // this is added separately because the rss module expects it to be a string
 			link: `/${post.slug}/`,
 		})),
 	});
