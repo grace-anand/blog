@@ -2,7 +2,7 @@
 title: 'This is how you can git commit in past date'
 description: 'Can you commit in past date? TLDR; Yes, you can. Let me show you how.'
 pubDate: 'Oct 01 2023'
-heroImage: '/placeholder-hero.jpg'
+heroImages: ['/blog/git/hero-image.png', '/blog/git/hero-image-dark.png']
 tags: ['tips']
 author: 'anand'
 ---

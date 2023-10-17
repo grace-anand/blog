@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import DualImage from './DualImage.astro';
 
 export interface Props {
   post: CollectionEntry<'blog'>;
@@ -9,7 +10,7 @@ const { data: postData, slug } = post
 ---
 <a class="p-3 bg-card/30 rounded-md" href={`/${slug}/`}>
   <div class="p-2">
-    <img src={postData.heroImage} alt="post img" class="rounded-sm" transition:name={slug}>
+    <DualImage images={postData.heroImages} alt='post' className="rounded-sm" transitionName={slug} />
   </div>
   <div class="p-3">
     <h3 class="text-2xl text-bk-purple-300">{ postData.title }</h3>

@@ -2,7 +2,6 @@
 title: Code block example
 description: This contains example code blocks
 pubDate: 'Jul 08 2022'
-heroImage: '/placeholder-hero.jpg'
 draft: true
 author: 'anand'
 ---

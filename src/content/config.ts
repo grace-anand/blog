@@ -11,7 +11,11 @@ const blog = defineCollection({
 			.string()
 			.or(z.date())
 			.transform((val) => new Date(val)),
-		heroImage: z.string(),
+		heroImages: z
+			.array(z.string())
+			.max(2)
+			.optional()
+			.transform((val) => [...(val || ['/placeholder-hero.jpg', '/placeholder-hero-dark.jpg'])]),
 		draft: z.boolean().optional(),
 		tags: z.array(reference('tag')).optional(),
 		author: reference('author'),

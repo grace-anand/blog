@@ -1,0 +1,12 @@
+---
+import { cn } from '@lib/utils';
+export interface Props {
+  images: string[];
+  className?: string;
+  alt?: string;
+  transitionName?: string;
+}
+const { images, className, alt, transitionName } = Astro.props;
+---
+<img src={images[0]} alt={alt} class={cn("dark:hidden block", className ?? '')} transition:name={transitionName ?? ''} >
+<img src={images[1]} alt={alt} class={cn("dark:block hidden", className ?? '')} transition:name={transitionName ?? ''} >
