@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 
 const author = Astro.props;
 const posts: Post = await getCollection('blog');
-const filteredPosts = posts.filter((post) => post.data.author.id === author.id);
+const filteredPosts = posts.filter((post) => (post.data.author.id === author.id && !post.data.draft));
 ---
 <BaseLayout>
 	<section class=" max-w-7xl m-auto px-4">
