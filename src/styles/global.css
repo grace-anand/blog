@@ -208,3 +208,29 @@ pre > code {
 .markdown blockquote a {
 	@apply text-slate-900 dark:text-bk-purple-50;
 }
+.markdown blockquote {
+	@apply mt-6 border-l-2 pl-6 italic border-bk-purple-300/80;
+}
+.markdown blockquote p {
+	@apply mb-0;
+}
+
+.markdown table {
+	@apply w-full border-x border-bk-purple-300/80;
+}
+
+.markdown table > thead > tr > th {
+	@apply border-y border-l border-bk-purple-300/80 px-4 py-2 text-center font-bold text-bk-purple-500 dark:text-bk-purple-200 bg-white/30 dark:bg-bk-purple-1000/30;
+}
+
+.markdown table > tbody > tr > td {
+	@apply border-b border-l border-bk-purple-300/80 px-4 py-2 text-center;
+}
+
+.markdown table > tbody > tr > td > a {
+	@apply text-bk-purple-500 underline decoration-slate-500 decoration-dotted underline-offset-2 hover:text-bk-purple-700 dark:text-bk-purple-200 dark:decoration-bk-purple-200 dark:hover:text-bk-purple-300;
+}
+
+.markdown table > tbody > tr > td > p {
+	@apply mb-0;
+}
