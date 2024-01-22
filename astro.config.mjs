@@ -8,7 +8,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import prettyCodeOptions from './src/lib/utils/code/prettyCodeOptions';
 
 export default defineConfig({
-	site: 'https://anandr.vercel.app',
+	site: 'https://anandr-blog.vercel.app',
 	integrations: [mdx(), sitemap(), react(), tailwind()],
 	markdown: {
 		syntaxHighlight: false,
