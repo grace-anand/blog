@@ -1,51 +1,57 @@
 ---
-import PostList from "./PostList.astro";
+import PostList from './PostList.astro';
 import { type CollectionEntry, getCollection } from 'astro:content';
 
 type Category = CollectionEntry<'category'>['data'];
-type Post = Array<CollectionEntry<'blog'>>
-type PostList = Array<{ title: string, items: Array<{ link: string, title: string }> }>
-
+type Post = Array<CollectionEntry<'blog'>>;
+type PostList = Array<{
+	title: string;
+	slug: string;
+	items: Array<{ link: string; title: string }>;
+}>;
 
 const categories = await getCollection('category');
 const categoriesMap = new Map<string, Category>();
 categories.forEach((category) => {
-  categoriesMap.set(category.id, category.data);
+	categoriesMap.set(category.id, category.data);
 });
 
 export interface Props {
-  posts: Post
+	posts: Post;
 }
 
 const { posts } = Astro.props;
 
-const categorizedArticles = posts.reduce((acc : PostList, post: Post[number]) => {
-    const { slug: fullSlug, data } = post;
+const categorizedArticles = posts.reduce(
+	(acc: PostList, post: Post[number]) => {
+		const { slug: fullSlug, data } = post;
 
-    if (fullSlug.includes("/")) {
-      const [category] = fullSlug.split("/");
-      const existingCategory = acc.find((c) => c.title === category);
+		if (fullSlug.includes('/')) {
+			const [category] = fullSlug.split('/');
+			const existingCategory = acc.find((c) => c.slug === category);
 
-      if (existingCategory) {
-        existingCategory.items.push({ link: fullSlug, title: data.title });
-      } else {
-        acc.unshift({
-          title: categoriesMap.get(category!)?.name || category!,
-          items: [{ link: fullSlug, title: data.title }],
-        });
-      }
-    } else {
-      acc[acc.length - 1]?.items.push({ link: fullSlug, title: data.title });
-    }
-    return acc;
-  },
-  [
-    {
-      title: "Other articles",
-      items: []
-    }
-  ]
-)
+			if (existingCategory) {
+				existingCategory.items.push({ link: fullSlug, title: data.title });
+			} else {
+				acc.unshift({
+					slug: category!,
+					title: categoriesMap.get(category!)?.name || category!,
+					items: [{ link: fullSlug, title: data.title }],
+				});
+			}
+		} else {
+			acc[acc.length - 1]?.items.push({ link: fullSlug, title: data.title });
+		}
+		return acc;
+	},
+	[
+		{
+			slug: 'other',
+			title: 'Other articles',
+			items: [],
+		},
+	]
+);
 ---
 
-<PostList posts={categorizedArticles}/>
+<PostList posts={categorizedArticles} />

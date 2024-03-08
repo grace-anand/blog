@@ -3,6 +3,9 @@ title: 'How did I achieve syntax highlighting in this blog'
 description: 'In this blog post, I will explain how I achieved syntax highlighting in this blog. I will also explain how I achieved line highlighting, word highlighting, captioning, line add, remove, code diff, etc.'
 pubDate: 'Mar 03 2024'
 author: 'anand'
+tags: ['blog', 'markdown', 'tips']
+heroImages:
+  ['/blog/blog/syntax-highlighting-from-to.png', '/blog/blog/syntax-highlighting-from-to.png']
 ---
 
 I've always wondered how github and other platforms achieve syntax highlighting. I've wanted to achieve the same in my blog. I've finally achieved it and I'm going to explain how I did it in this blog post. Strap in, it's going to be a long one.
